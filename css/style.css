@@ -3,7 +3,16 @@
 }
 .oneFileInFilesContainer {
     display: inline-block;
+    margin: 1vmin;
+    padding: 1vmin;
 }
 .oneFileInFilesContainerPicked {
     background: red;
+}
+.addFileButton {
+    margin: 1vmin;
+    padding: 1vmin;
+}
+.inlineBlock {
+    display: inline-block;
 }

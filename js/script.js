@@ -7,13 +7,25 @@ class file {
         this._id = new Date();
     }
     createVisitContainer() {
-        let visitContainer = document.querySelector('.FilesContainer');
-        let Item = document.createElement('button');
-        Item.classList.add('oneFileInFilesContainer');
-        visitContainer.appendChild(Item);
-        Item.onmousedown = this.pick.bind( this);
-        Item.innerHTML = this._name;
+        //create item and bind this object to this DOM element // query filesContainer
+        let filesAllContainer = document.querySelector('.FilesContainer');
+        let Item = document.createElement('div');
         this.container = Item;
+
+        Item.classList.add('oneFileInFilesContainer');
+        filesAllContainer.appendChild(Item);
+        Item.onmousedown = this.pick.bind( this);
+
+        let nameContainer = document.createElement('div');
+        nameContainer.innerHTML = this._name;
+        nameContainer.classList.add('.inlineBlock');
+        Item.appendChild(nameContainer);
+
+        let cancelButton = document.createElement('div');
+        cancelButton.onmousedown = this.deleteThis.bind( this);
+        cancelButton.innerHTML = "X";
+        cancelButton.classList.add('.inlineBlock');
+        Item.appendChild(cancelButton);
     }
 
     pick(){
@@ -22,12 +34,18 @@ class file {
                 e.removePick()
             }
         })
-        this.container.classList.remove("oneFileInFilesContainer")
         this.container.classList.add("oneFileInFilesContainerPicked")
     }
     removePick() {
         this.container.classList.remove("oneFileInFilesContainerPicked")
-        this.container.classList.add("oneFileInFilesContainer")
+    }
+    deleteThis() {
+        allFiles.forEach(e => {
+            if(e._id === this._id){
+                this.container.remove()
+                e.remove()
+            }
+        })
     }
 }
 const allFiles = []
