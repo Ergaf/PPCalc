@@ -1,0 +1,9 @@
+.allFilesContainer {
+    display: flex;
+}
+.oneFileInFilesContainer {
+    display: inline-block;
+}
+.oneFileInFilesContainerPicked {
+    background: red;
+}
