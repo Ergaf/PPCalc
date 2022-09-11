@@ -1,62 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="css/bootstrap.min.css.map" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <title>Calc</title>
 </head>
 <body>
-    <header>
-        <div class="logo"></div>
-    </header>
+<header>
+    <div class="logo"></div>
+</header>
 
-    <div class="mainContainer">
-        <div class="FilesContainer">
-            <button class="addFileButton">Додати файл</button>
-        </div>
+<div class="mainContainer">
+    <div class="FilesContainer">
+        <button class="btn btn-primary" id="addFileButton">Додати файл</button>
+    </div>
+
+    <div class="settingsContainer">
         <div class="fileViewContainer">
 
         </div>
         <div class="fileSettingsContainer">
             <div class="presetContainer">
-                <button class="preset">Документ</button>
-                <button class="preset">Презентація</button>
-                <button class="preset">preset3</button>
-                <button class="preset">preset4</button>
-                <button class="preset">preset5</button>
-                <button class="preset">preset6</button>
+                <button class="btn btn-secondary">Документ</button>
+                <button class="btn btn-secondary">Презентація</button>
+                <button class="btn btn-secondary">preset3</button>
+                <button class="btn btn-secondary">preset4</button>
+                <button class="btn btn-secondary">preset5</button>
+                <button class="btn btn-secondary">preset6</button>
+            </div>
+            <div class="presetName">
+
             </div>
             <div class="optionsContainer">
-                <select name="format"> <!--Supplement an id here instead of using 'name'-->
+                <select name="format" id="formatSelect"> <!--Supplement an id here instead of using 'name'-->
                     <option value="1">A4</option>
                     <option value="2">A3</option>
                     <option value="3">A2</option>
                 </select>
-                <select name="destiny"> <!--Supplement an id here instead of using 'name'-->
-                    <option value="1">$$</option>
-                    <option value="2">$$</option>
-                    <option value="3">$$</option>
-                </select>
-                <select name="sides"> <!--Supplement an id here instead of using 'name'-->
+                <select name="sides" id="sidesSelect"> <!--Supplement an id here instead of using 'name'-->
                     <option value="1">one</option>
                     <option value="2">two</option>
                 </select>
-                <select name="color"> <!--Supplement an id here instead of using 'name'-->
+                <select name="color" id="colorSelect"> <!--Supplement an id here instead of using 'name'-->
                     <option value="1">w/b</option>
                     <option value="2">color</option>
-                </select>
-                <select name="binding"> <!--Supplement an id here instead of using 'name'-->
-                    <option value="1">$$</option>
-                    <option value="2">$$</option>
                 </select>
             </div>
         </div>
     </div>
+</div>
+</div>
 
-    <footer>
+<footer>
 
-    </footer>
+</footer>
 
 <script src="js/script.js"></script>
 </body>
