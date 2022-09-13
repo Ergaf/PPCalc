@@ -10,8 +10,8 @@
 <header>
     <div class="logo"></div>
 </header>
-
-<div class="mainContainer">
+<div class="download">Завантаження</div>
+<div class="mainContainer nonDisplay">
     <div class="FilesContainer">
         <button class="btn btn-primary" id="addFileButton">Додати файл</button>
     </div>
@@ -22,34 +22,37 @@
         </div>
         <div class="fileSettingsContainer">
             <div class="presetContainer">
-                <button class="btn btn-secondary">Документ</button>
-                <button class="btn btn-secondary">Презентація</button>
-                <button class="btn btn-secondary">Плакат</button>
-                <button class="btn btn-secondary">Листівка</button>
-                <button class="btn btn-secondary">Візітівка</button>
-                <button class="btn btn-secondary">Наліпки</button>
-                <button class="btn btn-secondary">Бірки</button>
-                <button class="btn btn-secondary">Брошура</button>
-                <button class="btn btn-secondary">Блокнот</button>
-                <button class="btn btn-secondary">Календарь</button>
+                <button class="btn btn-secondary" id="document">Документ</button>
+                <button class="btn btn-secondary" id="presentation">Презентація</button>
+                <button class="btn btn-secondary" id="poster">Плакат</button>
+                <button class="btn btn-secondary" id="card">Листівка</button>
+                <button class="btn btn-secondary" id="visitCard">Візітівка</button>
+                <button class="btn btn-secondary" id="sticker" disabled>Наліпки</button>
+                <button class="btn btn-secondary" id="tags" disabled>Бірки</button>
+                <button class="btn btn-secondary" id="brochure">Брошура</button>
+                <button class="btn btn-secondary" id="note">Блокнот</button>
+                <button class="btn btn-secondary" id="calendar">Календарь</button>
             </div>
             <div class="presetName">
 
             </div>
             <div class="optionsContainer">
                 <select name="format" id="formatSelect"> <!--Supplement an id here instead of using 'name'-->
-                    <option value="1">A4</option>
-                    <option value="2">A3</option>
-                    <option value="3">A6</option>
-                    <option value="4">A5</option>
+                    <option value="A4">A4</option>
+                    <option value="A3">A3</option>
+                    <option value="A6">A6</option>
+                    <option value="A5">A5</option>
+                    <option value="Свій розмір">Свій розмір</option>
+                    <option value="50x90">50x90</option>
+                    <option value="50x90">50x90</option>
                 </select>
                 <select name="sides" id="sidesSelect"> <!--Supplement an id here instead of using 'name'-->
-                    <option value="1">one</option>
-                    <option value="2">two</option>
+                    <option value="Односторонній">Односторонній</option>
+                    <option value="Двосторонній">Двосторонній</option>
                 </select>
                 <select name="color" id="colorSelect"> <!--Supplement an id here instead of using 'name'-->
-                    <option value="1">w/b</option>
-                    <option value="2">color</option>
+                    <option value="Чорно-білий">Чорно-білий</option>
+                    <option value="Кольоровий">Кольоровий</option>
                 </select>
                 <select name="color" id="DestinySelect"> <!--Supplement an id here instead of using 'name'-->
 
@@ -80,6 +83,5 @@
 </footer>
 
 <script src="js/script.js"></script>
-<script src="js/jQuery.js"></script>
 </body>
 </html>
