@@ -57,6 +57,7 @@ class file {
 
             thisFile = this
             this.renderSettings()
+            document.querySelector(".settingsContainer").classList.remove("nonDisplay")
         }
     }
     removePick() {
@@ -65,12 +66,17 @@ class file {
         this.container.classList.add("bg-light")
     }
     deleteThis() {
-        allFiles.forEach(e => {
-            if(e._id === this._id){
-                this.container.remove()
-                e.remove()
+        for (let i = 0; i < allFiles.length; i++){
+            if(allFiles[i]._id === this._id){
+                allFiles[i].container.remove()
+                delete allFiles[i]
             }
-        })
+        }
+
+        console.log(allFiles);
+        if(allFiles.length < 1){
+            document.querySelector(".settingsContainer").classList.add("nonDisplay")
+        }
     }
 
     renderSettings() {
