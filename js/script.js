@@ -68,7 +68,7 @@ class file {
         for (let i = 0; i < allFiles.length; i++){
             if(allFiles[i]._id === this._id){
                 allFiles[i].container.remove()
-                delete allFiles[i]
+                allFiles.splice(i, 1)
             }
         }
 
