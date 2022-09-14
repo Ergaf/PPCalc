@@ -36,7 +36,7 @@ class file {
         let cancelButton = document.createElement('button');
         cancelButton.onmousedown = this.deleteThis.bind( this);
         cancelButton.classList.add('.btn-close');
-        cancelButton.innerText = "T"
+        cancelButton.innerText = "X"
         Item.appendChild(cancelButton);
     }
 
@@ -92,15 +92,15 @@ class file {
 
 }
 
-class buttons {
+class button {
     constructor() {
-
+        this._id = new Date();
     }
 }
 
 class select {
     constructor() {
-
+        this._id = new Date();
     }
 }
 
