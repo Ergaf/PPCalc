@@ -36,6 +36,7 @@ class file {
         let cancelButton = document.createElement('button');
         cancelButton.onmousedown = this.deleteThis.bind( this);
         cancelButton.classList.add('.btn-close');
+        cancelButton.innerText = "T"
         Item.appendChild(cancelButton);
     }
 
@@ -90,6 +91,19 @@ class file {
     }
 
 }
+
+class buttons {
+    constructor() {
+
+    }
+}
+
+class select {
+    constructor() {
+
+    }
+}
+
 const allFiles = []
 let thisFile;
 
