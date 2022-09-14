@@ -33,10 +33,9 @@ class file {
         this.nameContainer = nameContainer;
         Item.appendChild(nameContainer);
 
-        let cancelButton = document.createElement('div');
+        let cancelButton = document.createElement('button');
         cancelButton.onmousedown = this.deleteThis.bind( this);
-        cancelButton.innerHTML = "X";
-        cancelButton.classList.add('.inlineBlock');
+        cancelButton.classList.add('.btn-close');
         Item.appendChild(cancelButton);
     }
 
