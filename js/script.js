@@ -99,8 +99,33 @@ class button {
 }
 
 class select {
+    container;
     constructor() {
         this._id = new Date();
+    }
+    createDOMElem(){
+        this.container = document.createElement("select")
+
+    }
+    ifEbanii(){
+        if(thisFile.format === "A4" && thisFile.sides === "Односторонній" && thisFile.color ==="Чорно-білий"){
+            prices[3].variants[0].forEach(e => {
+                let opt = document.createElement("option").innerText = e[0]
+                this.container.append(opt)
+            })
+        }
+        if(thisFile.format === "A4" && thisFile.sides === "Односторонній" && thisFile.color ==="Кольоровий"){
+            prices[5].variants[0].forEach(e => {
+                let opt = document.createElement("option").innerText = e[0]
+                this.container.append(opt)
+            })
+        }
+        if(thisFile.format === "A4" && thisFile.sides === "Двосторонній" && thisFile.color ==="Чорно-білий"){
+            prices[6].variants[0].forEach(e => {
+                let opt = document.createElement("option").innerText = e[0]
+                this.container.append(opt)
+            })
+        }
     }
 }
 
@@ -155,6 +180,11 @@ document.querySelector("#document").addEventListener("click", function () {
     document.querySelector("#sidesSelect").value = "Односторонній"
     document.querySelector("#colorSelect").value = "Чорно-білий"
     thisFile.format = "A4"
+    thisFile.sides = "Односторонній"
+    thisFile.color = "Чорно-білий"
+    thisFile.type = "Документ"
+    document.querySelector(".presetName").innerText = thisFile.type
+
 })
 document.querySelector("#presentation").addEventListener("click", function () {
     document.querySelector("#formatSelect").value = "A4"
