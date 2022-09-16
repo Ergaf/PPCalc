@@ -1,137 +1,3 @@
-class file {
-    container;
-    nameContainer;
-    type;
-    format;
-    sides;
-    color;
-    cower;
-    destiny;
-    binding;
-    lamination;
-    roundCorner;
-    cutting;
-    constructor (name) {
-        this._name = name;
-        this._id = new Date();
-    }
-    createVisitContainer() {
-        //create item and bind this object to this DOM element // query filesContainer
-        let filesAllContainer = document.querySelector('.FilesContainer');
-        let Item = document.createElement('div');
-        this.container = Item;
-
-        Item.classList.add('card');
-        Item.classList.add('bg-light');
-        Item.style.cssText = "display: inline-block; padding: 1vmin;"
-        filesAllContainer.appendChild(Item);
-        Item.onmousedown = this.pick.bind( this);
-
-        let nameContainer = document.createElement('div');
-        nameContainer.innerHTML = this._name;
-        nameContainer.classList.add('.inlineBlock');
-        this.nameContainer = nameContainer;
-        Item.appendChild(nameContainer);
-
-        let cancelButton = document.createElement('button');
-        cancelButton.onmousedown = this.deleteThis.bind( this);
-        cancelButton.classList.add('.btn-close');
-        cancelButton.innerText = "X"
-        Item.appendChild(cancelButton);
-    }
-
-    pick(e){
-        if(e.target === this.container || e.target === this.nameContainer){
-            allFiles.forEach(e => {
-                if(e._id !== this._id){
-                    e.removePick()
-                }
-            })
-
-            this.container.classList.remove("bg-light")
-            this.container.classList.add("bg-dark")
-            this.container.classList.add("text-white")
-
-            let presetName = document.querySelector(".presetName")
-            presetName.innerText = this.type
-
-            thisFile = this
-            this.renderSettings()
-            document.querySelector(".settingsContainer").classList.remove("nonDisplay")
-        }
-    }
-    removePick() {
-        this.container.classList.remove("bg-dark")
-        this.container.classList.remove("text-white")
-        this.container.classList.add("bg-light")
-    }
-    deleteThis() {
-        for (let i = 0; i < allFiles.length; i++){
-            if(allFiles[i]._id === this._id){
-                allFiles[i].container.remove()
-                allFiles.splice(i, 1)
-            }
-        }
-
-        console.log(allFiles);
-        if(allFiles.length < 1){
-            document.querySelector(".settingsContainer").classList.add("nonDisplay")
-        }
-    }
-
-    renderSettings() {
-        formatSelect.value = this.format
-        sidesSelect.value = this.sides
-        colorSelect.value = this.color
-    }
-
-    createSelect(selectType) {
-        let select = document.createElement("select")
-
-    }
-
-}
-
-class button {
-    constructor() {
-        this._id = new Date();
-    }
-}
-
-class select {
-    container;
-    constructor() {
-        this._id = new Date();
-    }
-    createDOMElem(){
-        // document.querySelector(".se").remove()
-        this.container = document.createElement("select")
-        this.container.classList.add("se")
-        optContainer.appendChild(this.container)
-        console.log(this.container);
-    }
-    ifEbanii(){
-        if(thisFile.format === "A4" && thisFile.sides === "Односторонній" && thisFile.color ==="Чорно-білий"){
-            prices[3].variants[0].forEach(e => {
-                let opt = document.createElement("option").innerText = e[0]
-                this.container.append(opt)
-            })
-        }
-        if(thisFile.format === "A4" && thisFile.sides === "Односторонній" && thisFile.color ==="Кольоровий"){
-            prices[5].variants[0].forEach(e => {
-                let opt = document.createElement("option").innerText = e[0]
-                this.container.append(opt)
-            })
-        }
-        if(thisFile.format === "A4" && thisFile.sides === "Двосторонній" && thisFile.color ==="Чорно-білий"){
-            prices[6].variants[0].forEach(e => {
-                let opt = document.createElement("option").innerText = e[0]
-                this.container.append(opt)
-            })
-        }
-        console.log(this.container);
-    }
-}
 
 const allFiles = []
 let thisFile;
@@ -140,13 +6,21 @@ const addFileButton = document.querySelector("#addFileButton");
 addFileButton.addEventListener("click", function () {
     let file1 = new file("file")
     allFiles.push(file1)
-    file1.createVisitContainer()
+    file1.createFileContainer()
 })
+
+let presetName = document.querySelector(".presetName")
+let price = document.querySelector(".price")
 
 let formatSelect = document.querySelector("#formatSelect")
 let sidesSelect = document.querySelector("#sidesSelect")
 let colorSelect = document.querySelector("#colorSelect")
-// let destinySelect = document.querySelector("#DestinySelect")
+let destinySelect = document.querySelector("#destinySelect")
+let cowerSelect = document.querySelector("#cowerSelect")
+let bindingSelect = document.querySelector("#bindingSelect")
+let laminationSelect = document.querySelector("#laminationSelect")
+let roundCornerSelect = document.querySelector("#roundCornerSelect")
+let cuttingSelect = document.querySelector("#cuttingSelect")
 
 let prices;
 fetch('https://script.googleusercontent.com/macros/echo?user_content_key=wLSQSatR6bZv9i8U5VtiOsa7GMSDGnnZijrnGFZE1_jwd1QJkdBz8Sl8ITa_TvVjVpf_ByOh6IcFuOZ7evsUSo_9NYtdFJYTm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDbwAl7CMxVAiYx-XcQGm2-pK98VFRlg2L1Bgi9-N5lGP8ipd0KGqDVV0UksueULwVpami56uyJ4IxkRYgJm5B_wls8-MAHEtdz9Jw9Md8uu&lib=MKqsPpMpIdvM_NE9JC918gzq7P1CHZY8E')
@@ -180,54 +54,55 @@ fetch('https://script.googleusercontent.com/macros/echo?user_content_key=wLSQSat
 
 let optContainer = document.querySelector(".optionsContainer")
 document.querySelector("#document").addEventListener("click", function () {
-    document.querySelector("#formatSelect").value = "A4"
-    document.querySelector("#sidesSelect").value = "Односторонній"
-    document.querySelector("#colorSelect").value = "Чорно-білий"
     thisFile.format = "A4"
     thisFile.sides = "Односторонній"
     thisFile.color = "Чорно-білий"
-    thisFile.type = "Документ"
-    document.querySelector(".presetName").innerText = thisFile.type
-    let o = new select().createDOMElem()
-    o.ifEbanii()
+    thisFile.destiny = "90 гр"
+    thisFile.destinyAppend()
+    thisFile.renderSettings()
 
 })
 document.querySelector("#presentation").addEventListener("click", function () {
-    document.querySelector("#formatSelect").value = "A4"
-    document.querySelector("#sidesSelect").value = "Односторонній"
-    document.querySelector("#colorSelect").value = "Кольоровий"
     thisFile.format = "A4"
     thisFile.sides = "Односторонній"
     thisFile.color = "Кольоровий"
-    thisFile.type = "Документ"
-    document.querySelector(".presetName").innerText = thisFile.type
-    let o = new select().createDOMElem()
-    o.ifEbanii()
+    thisFile.destinyAppend()
+    thisFile.renderSettings()
 })
 document.querySelector("#poster").addEventListener("click", function () {
-    document.querySelector("#formatSelect").value = "A3"
-    document.querySelector("#sidesSelect").value = "Односторонній"
-    document.querySelector("#colorSelect").value = "Кольоровий"
+    thisFile.format = ""
+    thisFile.sides = ""
+    thisFile.color = ""
+    thisFile.destinyAppend()
+    thisFile.renderSettings()
 })
 document.querySelector("#card").addEventListener("click", function () {
-    document.querySelector("#formatSelect").value = "A6"
-    document.querySelector("#sidesSelect").value = "Односторонній"
-    document.querySelector("#colorSelect").value = "Кольоровий"
+    thisFile.format = ""
+    thisFile.sides = ""
+    thisFile.color = ""
+    thisFile.destinyAppend()
+    thisFile.renderSettings()
 })
 document.querySelector("#visitCard").addEventListener("click", function () {
-    document.querySelector("#formatSelect").value = "50x90"
-    document.querySelector("#sidesSelect").value = "Односторонній"
-    document.querySelector("#colorSelect").value = "Кольоровий"
+    thisFile.format = ""
+    thisFile.sides = ""
+    thisFile.color = ""
+    thisFile.destinyAppend()
+    thisFile.renderSettings()
 })
 document.querySelector("#sticker").addEventListener("click", function () {
-    document.querySelector("#formatSelect").value = "A6"
-    document.querySelector("#sidesSelect").value = "Односторонній"
-    document.querySelector("#colorSelect").value = "Кольоровий"
+    thisFile.format = ""
+    thisFile.sides = ""
+    thisFile.color = ""
+    thisFile.destinyAppend()
+    thisFile.renderSettings()
 })
 document.querySelector("#tags").addEventListener("click", function () {
-    document.querySelector("#formatSelect").value = "A6"
-    document.querySelector("#sidesSelect").value = "Односторонній"
-    document.querySelector("#colorSelect").value = "Кольоровий"
+    thisFile.format = ""
+    thisFile.sides = ""
+    thisFile.color = ""
+    thisFile.destinyAppend()
+    thisFile.renderSettings()
 })
 document.querySelector("#brochure").addEventListener("click", function () {
     document.querySelector("#formatSelect").value = "A4"
