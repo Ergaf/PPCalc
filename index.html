@@ -36,8 +36,8 @@
                 <button class="btn btn-secondary" id="poster">Плакат</button>
                 <button class="btn btn-secondary" id="card">Листівка</button>
                 <button class="btn btn-secondary" id="visitCard">Візітівка</button>
-                <button class="btn btn-secondary" id="sticker" disabled>Наліпки</button>
-                <button class="btn btn-secondary" id="tags" disabled>Бірки</button>
+                <button class="btn btn-secondary" id="sticker">Наліпки</button>
+                <button class="btn btn-secondary" id="tags">Бірки</button>
                 <button class="btn btn-secondary" id="brochure">Брошура</button>
                 <button class="btn btn-secondary" id="note">Блокнот</button>
                 <button class="btn btn-secondary" id="calendar">Календарь</button>
@@ -45,9 +45,9 @@
             <div class="presetName">
 
             </div>
-            <div class="price"></div>
+
             <div class="optionsContainer">
-                <select name="format" id="formatSelect"> <!--Supplement an id here instead of using 'name'-->
+                <select name="format" id="formatSelect" class="form-select"> <!--Supplement an id here instead of using 'name'-->
                     <option value="A4">A4</option>
                     <option value="A3">A3</option>
                     <option value="A6">A6</option>
@@ -83,6 +83,15 @@
 
                 </select>
             </div>
+
+            <div>
+                Ціна
+                <div class="price"></div>
+            </div>
+
+            <input type="number" id="countInt">
+
+
         </div>
     </div>
 </div>
