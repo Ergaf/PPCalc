@@ -22,6 +22,8 @@ let laminationSelect = document.querySelector("#laminationSelect")
 let roundCornerSelect = document.querySelector("#roundCornerSelect")
 let cuttingSelect = document.querySelector("#cuttingSelect")
 let countInt = document.querySelector("#countInt")
+let sizeX = document.querySelector("#sizeX")
+let sizeY = document.querySelector("#sizeY")
 
 let prices;
 fetch('https://script.googleusercontent.com/macros/echo?user_content_key=wLSQSatR6bZv9i8U5VtiOsa7GMSDGnnZijrnGFZE1_jwd1QJkdBz8Sl8ITa_TvVjVpf_ByOh6IcFuOZ7evsUSo_9NYtdFJYTm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDbwAl7CMxVAiYx-XcQGm2-pK98VFRlg2L1Bgi9-N5lGP8ipd0KGqDVV0UksueULwVpami56uyJ4IxkRYgJm5B_wls8-MAHEtdz9Jw9Md8uu&lib=MKqsPpMpIdvM_NE9JC918gzq7P1CHZY8E')
@@ -177,5 +179,28 @@ cuttingSelect.addEventListener("change", function () {
 
 countInt.addEventListener("change", function () {
     thisFile._count = countInt.value
+    thisFile.renderSettings()
+})
+
+sizeX.addEventListener("change", function () {
+    if(sizeX.value < 45){
+        sizeX.value = 45
+    }
+    if(sizeX.value > 310){
+        sizeX.value = 310
+    }
+    thisFile.x = sizeX.value
+    thisFile.format = "Свій розмір"
+    thisFile.renderSettings()
+})
+sizeY.addEventListener("change", function () {
+    if(sizeY.value < 45){
+        sizeY.value = 45
+    }
+    if(sizeY.value > 440){
+        sizeY.value = 440
+    }
+    thisFile.y = sizeY.value
+    thisFile.format = "Свій розмір"
     thisFile.renderSettings()
 })

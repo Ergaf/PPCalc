@@ -11,6 +11,8 @@ class file {
     lamination;
     roundCorner;
     cutting;
+    x;
+    y;
     constructor (name) {
         this._name = name;
         this._id = new Date();
@@ -85,9 +87,14 @@ class file {
     renderSettings() {
         destinySelect.innerHTML = ""
         price.innerText = "Не знайдено"
-        if(this.getDestinyOnData() !== undefined){
+        if(getDestinyOnData() !== undefined){
             this.destinyAppend()
-            price.innerText = this.getPrice()*this._count;
+            price.innerText = getPrice(this._count)*this._count;
+            if(this.format === "Свій розмір"){
+                let sss = Math.ceil(this._count / getHowInASheet())
+                console.log(sss);
+                price.innerText = getPrice(sss)*sss;
+            }
         }
         formatSelect.value = this.format
         sidesSelect.value = this.sides
@@ -100,10 +107,15 @@ class file {
         cuttingSelect.value = this.cutting
         presetName.innerText = this.type
         countInt.value = this._count
+        if(this.format !== "Свій розмір"){
+            this.getSize()
+        }
+        sizeX.value = this.x
+        sizeY.value = this.y
     }
 
     destinyAppend() {
-        this.getDestinyOnData().forEach(e => {
+        getDestinyOnData().forEach(e => {
             let opt = document.createElement("option")
             opt.innerText = e[0]
             opt.value = e[0]
@@ -111,67 +123,9 @@ class file {
         })
     }
 
-    getDestinyOnData() {
-        if(this.format === "A4" && this.sides === "Односторонній" && this.color ==="Чорно-білий"){
-            return prices[3].variants
-        }
-        if(this.format === "A3" && this.sides === "Односторонній" && this.color ==="Чорно-білий"){
-            return prices[4].variants
-        }
-
-        if(this.format === "A4" && this.sides === "Односторонній" && this.color ==="Кольоровий"){
-            return prices[5].variants
-        }
-        if(this.format === "A4" && this.sides === "Двосторонній" && this.color ==="Кольоровий"){
-            return prices[6].variants
-        }
-        if(this.format === "A3" && this.sides === "Односторонній" && this.color ==="Кольоровий"){
-            return prices[7].variants
-        }
-        if(this.format === "A3" && this.sides === "Двосторонній" && this.color ==="Кольоровий"){
-            return prices[8].variants
-        }
-    }
-    getPrice(){
-        if(this._count < 11){
-            let price = this.getDestinyOnData()
-            let ret = 0
-            price.forEach(e => {
-                if(e[0] === this.destiny){
-                    ret = e[1]
-                }
-            })
-            return ret
-        }
-        if(this._count > 10 && this._count < 51){
-            let price = this.getDestinyOnData()
-            let ret = 0
-            price.forEach(e => {
-                if(e[0] === this.destiny){
-                    ret = e[2]
-                }
-            })
-            return ret
-        }
-        if(this._count > 50 && this._count < 101){
-            let price = this.getDestinyOnData()
-            let ret = 0
-            price.forEach(e => {
-                if(e[0] === this.destiny){
-                    ret = e[3]
-                }
-            })
-            return ret
-        }
-        if(this._count > 100){
-            let price = this.getDestinyOnData()
-            let ret = 0
-            price.forEach(e => {
-                if(e[0] === this.destiny){
-                    ret = e[4]
-                }
-            })
-            return ret
-        }
+    getSize() {
+        let sizes = getSizes()
+        this.x = sizes.x
+        this.y = sizes.y
     }
 }
