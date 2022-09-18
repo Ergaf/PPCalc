@@ -1,4 +1,4 @@
-function getDestinyOnData() {
+function getDestinyInData() {
     if(thisFile.format === "A4" && thisFile.sides === "Односторонній" && thisFile.color ==="Чорно-білий"){
         return prices[3].variants
     }
@@ -27,9 +27,28 @@ function getDestinyOnData() {
     }
 }
 
-function getPrice(count){
+function getBindingInData() {
+    let ret = [];
+    if(thisFile.format === "A4"){
+        prices[11].variants.forEach(e => {
+            if(thisFile._count >= e[2] && thisFile._count <= e[3]){
+                ret.push(e)
+            }
+        })
+    }
+    if(thisFile.format === "A3"){
+        prices[12].variants.forEach(e => {
+            if(thisFile._count >= e[2] && thisFile._count <= e[3]){
+                ret.push(e)
+            }
+        })
+    }
+    return ret;
+}
+
+function getDestinyPrice(count){
     if(count < 11){
-        let price = getDestinyOnData()
+        let price = getDestinyInData()
         let ret = 0
         price.forEach(e => {
             if(e[0] === thisFile.destiny){
@@ -39,7 +58,7 @@ function getPrice(count){
         return ret
     }
     if(count > 10 && count < 51){
-        let price = getDestinyOnData()
+        let price = getDestinyInData()
         let ret = 0
         price.forEach(e => {
             if(e[0] === thisFile.destiny){
@@ -49,7 +68,7 @@ function getPrice(count){
         return ret
     }
     if(count > 50 && count < 101){
-        let price = getDestinyOnData()
+        let price = getDestinyInData()
         let ret = 0
         price.forEach(e => {
             if(e[0] === thisFile.destiny){
@@ -59,7 +78,7 @@ function getPrice(count){
         return ret
     }
     if(count > 100){
-        let price = getDestinyOnData()
+        let price = getDestinyInData()
         let ret = 0
         price.forEach(e => {
             if(e[0] === thisFile.destiny){

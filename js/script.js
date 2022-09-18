@@ -75,7 +75,7 @@ document.querySelector("#presentation").addEventListener("click", function () {
 })
 document.querySelector("#poster").addEventListener("click", function () {
     thisFile.type = "Постер"
-    thisFile.format = ""
+    thisFile.format = "A3"
     thisFile.sides = ""
     thisFile.color = ""
     thisFile.renderSettings()
@@ -203,4 +203,16 @@ sizeY.addEventListener("change", function () {
     thisFile.y = sizeY.value
     thisFile.format = "Свій розмір"
     thisFile.renderSettings()
+})
+
+let imgInp = document.querySelector("#imgInp")
+let blah = document.querySelector("#blah")
+
+imgInp.addEventListener("change", function () {
+
+
+        const [file] = imgInp.files
+        if (file) {
+            blah.src = URL.createObjectURL(file)
+        }
 })

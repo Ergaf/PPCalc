@@ -85,17 +85,21 @@ class file {
     }
 
     renderSettings() {
+        let priceCalc = 0;
         destinySelect.innerHTML = ""
-        price.innerText = "Не знайдено"
-        if(getDestinyOnData() !== undefined){
+        if(getDestinyInData() !== undefined){
             this.destinyAppend()
-            price.innerText = getPrice(this._count)*this._count;
+            priceCalc = getDestinyPrice(this._count)*this._count;
             if(this.format === "Свій розмір"){
                 let sss = Math.ceil(this._count / getHowInASheet())
-                console.log(sss);
-                price.innerText = getPrice(sss)*sss;
+                priceCalc = getDestinyPrice(sss)*sss;
             }
         }
+        bindingSelect.innerHTML = ""
+        if(getBindingInData() !== []){
+            this.bindingAppend()
+        }
+        price.innerText = priceCalc
         formatSelect.value = this.format
         sidesSelect.value = this.sides
         colorSelect.value = this.color
@@ -115,11 +119,20 @@ class file {
     }
 
     destinyAppend() {
-        getDestinyOnData().forEach(e => {
+        getDestinyInData().forEach(e => {
             let opt = document.createElement("option")
             opt.innerText = e[0]
             opt.value = e[0]
             destinySelect.appendChild(opt)
+        })
+    }
+
+    bindingAppend() {
+        getBindingInData().forEach(e => {
+            let opt = document.createElement("option")
+            opt.innerText = e[0]
+            opt.value = e[0]
+            bindingSelect.appendChild(opt)
         })
     }
 
