@@ -207,12 +207,15 @@ sizeY.addEventListener("change", function () {
 
 let imgInp = document.querySelector("#imgInp")
 let blah = document.querySelector("#blah")
+let iframe = document.querySelector("#iframe")
 
 imgInp.addEventListener("change", function () {
 
 
         const [file] = imgInp.files
         if (file) {
-            blah.src = URL.createObjectURL(file)
+            // blah.src = URL.createObjectURL(file)
+            iframe.setAttribute('src', URL.createObjectURL(file));
         }
 })
+// window.URL.revokeObjectURL(obj_url);
